@@ -1,0 +1,61 @@
+openapi: 3.0.0
+info:
+  title: Orders Repository
+  description: <a href="https://github.com/stepan-perlov/openapi-clients-concept">https://github.com/stepan-perlov/openapi-clients-concept</a>
+  version: 1.0.0
+  contact: {}
+tags: []
+servers: []
+x-smc-openapi-codegen:
+  settings:
+    model-field: x-model
+    from-field: x-from
+    package-field: x-package
+  defaults:
+    from-field: /
+    package-field: smc-orders-repository-contracts
+components:
+  schemas:
+    OrderStatus:
+      type: string
+      enum:
+        - new
+        - processing
+        - done
+    OrderModel:
+      type: object
+      properties:
+        id:
+          type: number
+        status:
+          $ref: '#components/schemas/OrderStatus'
+    GetOrdersParams:
+      type: object
+      properties:
+        offset:
+          type: number
+        limit:
+          type: number
+    GetOrdersResult:
+      type: array
+      items:
+        $ref: '#components/schemas/OrderModel'
+paths:
+  /orders:
+    get:
+      operationId: getOrders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetOrdersParams'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrdersResult'
+          description: ""
+      tags:
+       - orders

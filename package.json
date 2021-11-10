@@ -1,0 +1,30 @@
+{
+  "name": "@smc/openapi-codegen",
+  "version": "1.0.0",
+  "description": "OpenAPI Generator with Shared Models Concept",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "java:package": "mvn package",
+    "codegen:simple": "openapi-generator-cli generate --custom-generator=target/smc-openapi-codegen-1.0.0.jar -o target/simple-example -g typescript-nestjs -t src/main/resources -i src/test/resources/spec/openapi-simple-example.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stepan-perlov/smc-openapi-codegen.git"
+  },
+  "keywords": [
+    "OpenAPI",
+    "Generator",
+    "Shared",
+    "Models",
+    "Concept"
+  ],
+  "author": "Stepan Perlov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stepan-perlov/smc-openapi-generator/issues"
+  },
+  "homepage": "https://github.com/stepan-perlov/smc-openapi-generator#readme",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.14"
+  }
+}
